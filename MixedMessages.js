@@ -1,3 +1,8 @@
+const bigAdjectives = ['huge', 'vast', 'out of this world', 'big', 'humungous', 'enormous', 'massive'];
+const smallAdjectives = ['tiny', 'minuscule', 'minute', 'sweet', 'cute', 'Lilliputian', 'pathetic', 'insignificant'];
+const normalAdjectives = ['tasty', 'medium-sized', 'not bad', 'average', 'amazing', 'just right', 'uninteresting'];
+
+
 // Function to create a random string of 0's and 1's
 const createRandomByte = () => {
     const byte = [];
@@ -8,15 +13,24 @@ const createRandomByte = () => {
     return(byte.join(''));
 }
 
-
-//Function to create a random message based on the byte handed as an argument
+//Function to create a random message based on the arry of bits handed as an argument
 const createMessage = (byte) => {
-
+    let comment = '';
+    if (byte === '00101010') {
+        comment = 'the answer to the ultimate question of life, the universe, and everything';
+    } else if (byte === '00000000') {
+        comment = 'nada';    
+    } else if (byte === '11111111') {
+        comment = 'really lucky - you have won the Jackpot';    
+    } else if (byte.slice(0,2) === '11') {
+        comment = bigAdjectives[Math.floor(Math.random()*bigAdjectives.length)];
+    } else if (byte.slice(0,3) === '000') {
+        comment = smallAdjectives[Math.floor(Math.random()*smallAdjectives.length)];    
+    } else {
+        comment = normalAdjectives[Math.floor(Math.random()*normalAdjectives.length)];
+    }
+    return `Your byte of choice is ${byte}, which is ${comment}!`;
 }
 
-
-
-
-
-console.log(createRandomByte());
-
+//Call the createMessage function, using createRandomByte as a callback function
+console.log(createMessage(createRandomByte()));
