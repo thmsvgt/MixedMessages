@@ -21,4 +21,7 @@ In particular it
 - Node.js v16.13.1
 
 ## Usage
-Run the script using Node from a terminal.
+Run the script using Node from a terminal:
+```
+node MixedMessages.js
+```
