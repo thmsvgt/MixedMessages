@@ -1,7 +1,8 @@
-const bigAdjectives = ['huge', 'vast', 'out of this world', 'big', 'humungous', 'enormous', 'massive'];
-const smallAdjectives = ['tiny', 'minuscule', 'minute', 'sweet', 'cute', 'Lilliputian', 'pathetic', 'insignificant'];
-const normalAdjectives = ['tasty', 'medium-sized', 'not bad', 'average', 'amazing', 'just right', 'uninteresting'];
-
+const adjectives = {
+    big: ['huge', 'vast', 'out of this world', 'big', 'humungous', 'enormous', 'massive'],
+    small: ['tiny', 'minuscule', 'minute', 'sweet', 'cute', 'Lilliputian', 'pathetic', 'insignificant'],
+    normal: ['tasty', 'medium-sized', 'not bad', 'average', 'amazing', 'just right', 'uninteresting']
+}
 
 // Function to create a random string of 0's and 1's
 const createRandomByte = () => {
@@ -23,14 +24,15 @@ const createMessage = (byte) => {
     } else if (byte === '11111111') {
         comment = 'really lucky - you have won the Jackpot';    
     } else if (byte.slice(0,2) === '11') {
-        comment = bigAdjectives[Math.floor(Math.random()*bigAdjectives.length)];
+        comment = adjectives.big[Math.floor(Math.random()*adjectives.big.length)];
     } else if (byte.slice(0,3) === '000') {
-        comment = smallAdjectives[Math.floor(Math.random()*smallAdjectives.length)];    
+        comment = adjectives.small[Math.floor(Math.random()*adjectives.small.length)];    
     } else {
-        comment = normalAdjectives[Math.floor(Math.random()*normalAdjectives.length)];
+        comment = adjectives.normal[Math.floor(Math.random()*adjectives.normal.length)];
     }
     return `Your byte of choice is ${byte}, which is ${comment}!`;
 }
 
 //Call the createMessage function, using createRandomByte as a callback function
 console.log(createMessage(createRandomByte()));
+//console.log(createMessage('11000000'));
