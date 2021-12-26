@@ -54,5 +54,3 @@ const createRandomByte = () => {
 
 //Call the createMessage function, using createRandomByte as a callback function
 console.log(mixedMessage.createMessage(createRandomByte()));
-//mixedMessage.small = 'close to zero';
-//console.log(mixedMessage.small);
