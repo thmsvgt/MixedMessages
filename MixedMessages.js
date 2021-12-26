@@ -35,4 +35,3 @@ const createMessage = (byte) => {
 
 //Call the createMessage function, using createRandomByte as a callback function
 console.log(createMessage(createRandomByte()));
-//console.log(createMessage('11000000'));
